@@ -25,54 +25,54 @@ Within this project, I would like to explore the following:
 - [6. Project limitations](https://github.com/WojciechStopka/project_moviedb#6-project-limitations)
 
 ## 1. Installation
-To use the Movie Database API Client, you need to have Python installed on your system. Additionally, you need to install the required dependencies: **pandas**, **requests**, **seaborn**, and **matplotlib**. You can install them using the following command:
+To use the Movie Database MoviesClient, you need to have Python installed on your system. Additionally, you need to install the required dependencies: **pandas**, **requests**, **seaborn**, and **matplotlib**. You can install them using the following command:
 ```
 pip install pandas requests seaborn matplotlib
 ```
 
 ## 2. Authentication
-Before using the API client, make sure you have an authentication token and account ID from 'The Movie Database' API. Store the authentication token in a file named **AUTH_TOKEN.txt** and the account ID in a file named **ACCOUNT_ID.txt**. These files should be located in the same directory as your Python script.
+Before using the API client, make sure you have an authentication token and account ID from 'The Movie Database' API. Store the authentication token and account ID in a file named **creds.py**. These files should be located in the same directory as your Python script.
 
 ## 3. Usage
-To use the Movie Database API Client, import the necessary libraries and create an instance of the ApiClient class
+To use the Movie Database API Client, import the necessary libraries and create an instance of the MoviesClient class
 ```
-from movie_api_client import ApiClient
+from client import MoviesClient
 
-client = ApiClient()
+new_client = MoviesClient()
 ```
 
 ### 3.1 Retrieving Popular Movies
 To retrieve a list of popular movies, use the `get_popular_movies` method
 ```
-movies = client.get_popular_movies(quantity=20)
+new_client.get_popular_movies()
 ```
 This method retrieves a list of popular movies from 'The Movie Database' API. The quantity parameter specifies the number of movies to retrieve (default is 20). The method returns a list of dictionaries containing movie data, including the **title**, **average rating**, and **total number of votes**.
 
 ### 3.2 Retrieving Movies Rated by User
 To retrieve a list of movies rated by the user, use the `get_rated_by_user_movies` method.
 ```
-movies = client.get_rated_by_user_movies()
+new_client.get_rated_by_user_movies()
 ```
 This method retrieves a list of movies rated by the user from 'The Movie Database' API. It returns a list of dictionaries containing movie data, including the **title**, **average rating** and **user rating**.
 
 ### 3.3 Calculating Average User Rating
 To calculate the average user rating for the movies rated by the user, use the `get_average_user_rating` method.
 ```
-average_rating = client.get_average_user_rating()
+new_client.get_average_user_rating()
 ```
 This method calculates the average user rating for the movies rated by the user. It returns a float value representing the **average rating**. If there are no rated movies, it returns **None**.
 
 ### 3.4 Visualizing Popular Movies
 To generate a bar plot visualizing the popular movies' data, use the `popular_movies_visualisation` method.
 ```
-client.popular_movies_visualisation()
+new_client.popular_movies_visualisation()
 ```
 This method generates a bar plot displaying the **movie titles** on the x-axis and the **average ratings** on the y-axis. It requires the **seaborn**, **matplotlib.pyplot**, and **pandas** libraries to be installed.
 
 ### 3.5 Visualizing Rated Movies
 To generate a bar plot visualizing the movies rated by the user, use the `rated_movies_visualisation` method.
 ```
-client.rated_movies_visualisation()
+new_client.rated_movies_visualisation()
 ```
 This method generates a bar plot displaying the **movie titles** on the x-axis and the **user ratings** on the y-axis. It also includes a red dashed line indicating the **average user rating**.
 
