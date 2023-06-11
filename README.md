@@ -32,8 +32,8 @@ pip install pandas requests seaborn matplotlib
 
 ## 2. Authentication
 Before using the API client: 
--make sure you have an authentication token and account ID from 'The Movie Database' API. 
--Store the **authentication token** and **account ID** in a file named **creds.py**. These files should be located in the same directory as your Python script.
+- make sure you have an authentication token and account ID from 'The Movie Database' API. 
+- Store the **authentication token** and **account ID** in a file named **creds.py**. These files should be located in the same directory as your Python script.
 
 ## 3. Usage
 To use the Movie Database API Client, import the necessary libraries and create an instance of the MoviesClient class
