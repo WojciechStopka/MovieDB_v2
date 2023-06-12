@@ -80,10 +80,10 @@ This method generates a bar plot displaying the **movie titles** on the x-axis a
 
 ## 4. Examples:
 ### 4.1 Rated Movies
-![image](https://github.com/WojciechStopka/project_moviedb/assets/44327221/258fb437-31c7-4840-97a1-844034b0b36b)
+![example 1](https://github.com/WojciechStopka/restaurant_finder_v2/assets/44327221/2e10b328-7732-409e-a931-11bfed1ae30c)
 
 ### 4.2 10 Popular Movies
-![image](https://github.com/WojciechStopka/project_moviedb/assets/44327221/6d07dddf-7fe2-4bcf-83b3-959228f37708)
+![example 2](https://github.com/WojciechStopka/restaurant_finder_v2/assets/44327221/466fa00d-634d-4993-81f6-83a1f63d81f0)
 
 ## 5. Ideas for improvements
 - Displaying information about specific movie such as **description**, **image**, **year of production**, **genre**.
