@@ -9,7 +9,9 @@ import creds
 
 
 class MoviesClient:
-    """A class representing an API client for retrieving movie data from 'The Movie Database' API."""
+    """
+    A class representing an API client for retrieving movie data from 'The Movie Database' API.
+    """
 
     def __init__(self):
         """
@@ -51,26 +53,27 @@ class MoviesClient:
             url = f"{endpoint}?{params_encoded}"
             response = requests.get(url, headers=headers)
             data = response.json()
-            try:
-                if not data["success"]:
-                    raise Exception(f"{data['status_message']}")
-            except KeyError:
-                pass
-            try:
+
+            if "results" in data:
                 results = data["results"]
-            except KeyError:
-                raise KeyError("Sorry no results for popular movies")
-            else:
-                for movie in results:
-                    if len(movies_list) < quantity:
-                        movie_data = {
-                            "Movie Title": movie["title"],
-                            "Average rating": movie["vote_average"],
-                            "Total number of votes": movie["vote_count"],
-                        }
-                        movies_list.append(movie_data)
-        self.popular_movies_list = movies_list
-        return movies_list
+                if len(results) > 0:
+                    for movie in results:
+                        if len(movies_list) < quantity:
+                            movie_data = {
+                                "Movie Title": movie["title"],
+                                "Average rating": movie["vote_average"],
+                                "Total number of votes": movie["vote_count"],
+                            }
+                            movies_list.append(movie_data)
+                else:
+                    raise Exception("No movies found in data")
+                self.popular_movies_list = movies_list
+                return movies_list
+            if not data["success"]:
+                if "status_message" in data:
+                    raise Exception(f"{data['status_message']}")
+                else:
+                    raise Exception(f"Something went wrong. Response: {data}")
 
     def get_rated_by_user_movies(self):
         """
@@ -90,25 +93,26 @@ class MoviesClient:
         headers = {"accept": "json", "Authorization": f"Bearer {self.auth_token}"}
         response = requests.get(endpoint, headers=headers)
         data = response.json()
-        try:
-            if not data["success"]:
-                raise Exception(f"{data['status_message']}")
-        except KeyError:
-            pass
-        try:
+        if "results" in data:
             results = data["results"]
-        except KeyError:
-            raise KeyError("Sorry no results for rated movies")
-        else:
-            for item in results:
-                movie_data = {
-                    "Movie Title": item["title"],
-                    "Average rating": item["vote_average"],
-                    "User rating": item["rating"],
-                }
-                movies_list.append(movie_data)
+            if len(results) > 0:
+                for movie in results:
+                    movie_data = {
+                        "Movie Title": movie["title"],
+                        "Average rating": movie["vote_average"],
+                        "User rating": movie["rating"],
+                    }
+                    movies_list.append(movie_data)
+            else:
+                raise Exception("No movies found in data")
             self.rated_movies_list = movies_list
             return movies_list
+
+        if not data["success"]:
+            if "status_message" in data:
+                raise Exception(f"{data['status_message']}")
+            else:
+                raise Exception(f"Something went wrong. Response: {data}")
 
     def get_average_user_rating(self):
         """
