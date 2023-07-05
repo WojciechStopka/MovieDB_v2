@@ -1,9 +1,6 @@
 from urllib.parse import urlencode
 
-import matplotlib.pyplot as plt
-import pandas as pd
 import requests
-import seaborn as sns
 
 import creds
 
@@ -131,41 +128,3 @@ class MoviesClient:
         average_rating = total_user_rating / total_ratings
         self.average_user_rating = average_rating
         return average_rating
-
-    def popular_movies_visualisation(self):
-        """
-        Generates a bar plot visualizing the popular movies' data.
-
-        The bar plot displays the movie title on the x-axis and the average rating on the y-axis.
-        """
-        df = pd.DataFrame(self.popular_movies_list)
-        ax = sns.barplot(
-            x="Movie Title",
-            y="Average rating",
-            data=df.sort_values("Average rating", ascending=False),
-        )
-        ax.set_xticklabels(ax.get_xticklabels(), rotation=90)
-        plt.title("Popular movies")
-        plt.show()
-
-    def rated_movies_visualisation(self):
-        """
-        Generates a bar plot visualizing the movies rated by the user.
-
-        The bar plot displays the movie title on the x-axis and the user rating on the y-axis.
-        It also includes a red dashed line indicating the average user rating.
-        """
-        df = pd.DataFrame(self.rated_movies_list)
-        ax = sns.barplot(x="Movie Title", y="User rating", data=df)
-        ax.set_xticklabels(ax.get_xticklabels(), rotation=90)
-        if self.average_user_rating:
-            plt.axhline(
-                self.average_user_rating,
-                ls="--",
-                linewidth=3,
-                color="red",
-                label="Average user rating",
-            )
-            plt.legend()
-        plt.title("Rated movies")
-        plt.show()
