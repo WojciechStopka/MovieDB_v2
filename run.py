@@ -1,5 +1,5 @@
 from client import MoviesClient
-from visualization import popular_movies_visualisation, rated_movies_visualisation
+from visualisation import popular_movies_visualisation, rated_movies_visualisation
 
 if __name__ == "__main__":
 	new_client = MoviesClient()
@@ -8,5 +8,3 @@ if __name__ == "__main__":
 	average_score = new_client.get_average_user_rating()
 	rated_movies_visualisation(rated_movies, average_score)
 	popular_movies_visualisation(popular_movies)
-
-

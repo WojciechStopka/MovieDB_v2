@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2296c1fb-d5ff-4dd8-8d2e-7dfad0ca5e31" name="Changes" comment="Error handling changes">
+    <list default="true" id="2296c1fb-d5ff-4dd8-8d2e-7dfad0ca5e31" name="Changes" comment="Rename module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +78,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688421311169</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Separating visualzation functions into different module.">
+      <created>1688570549312</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688570549312</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Rename module">
+      <created>1688630086386</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688630086386</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,6 +108,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Error handling changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error handling changes" />
+    <MESSAGE value="Separating visualzation functions into different module." />
+    <MESSAGE value="Rename module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename module" />
   </component>
 </project>
