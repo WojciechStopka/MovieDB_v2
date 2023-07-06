@@ -27,7 +27,7 @@ Within this project, I would like to explore the following:
 ## 1. Installation
 To use the Movie Database MoviesClient, you need to have Python installed on your system. Additionally, you need to install the required dependencies: **pandas**, **requests**, **seaborn**, and **matplotlib**. You can install them using the following command:
 ```
-pip install pandas requests seaborn matplotlib
+pip install -r requirements.txt
 ```
 
 ## 2. Authentication
@@ -39,50 +39,51 @@ Before using the API client:
 To use the Movie Database API Client, import the necessary libraries and create an instance of the MoviesClient class
 ```
 from client import MoviesClient
+from visualisation import popular_movies_visualisation, rated_movies_visualisation
 
 new_client = MoviesClient()
 ```
 
 ### 3.1 Retrieving Popular Movies
-To retrieve a list of popular movies, use the `get_popular_movies` method
+To retrieve a list of popular movies, use the `get_popular_movies` method and store it in variable. For example "popular_movies".
 ```
-new_client.get_popular_movies()
+popular_movies = new_client.get_popular_movies()
 ```
 This method retrieves a list of popular movies from 'The Movie Database' API. The quantity parameter specifies the number of movies to retrieve (default is 20). The method returns a list of dictionaries containing movie data, including the **title**, **average rating**, and **total number of votes**.
 
 ### 3.2 Retrieving Movies Rated by User
-To retrieve a list of movies rated by the user, use the `get_rated_by_user_movies` method.
+To retrieve a list of movies rated by the user, use the `get_rated_by_user_movies` method and store it in variable. For example "rated_movies".
 ```
-new_client.get_rated_by_user_movies()
+rated_movies = new_client.get_rated_by_user_movies()
 ```
 This method retrieves a list of movies rated by the user from 'The Movie Database' API. It returns a list of dictionaries containing movie data, including the **title**, **average rating** and **user rating**.
 
 ### 3.3 Calculating Average User Rating
-To calculate the average user rating for the movies rated by the user, use the `get_average_user_rating` method.
+To calculate the average user rating for the movies rated by the user, use the `get_average_user_rating` method store it in variable. For example "average_score"..
 ```
-new_client.get_average_user_rating()
+average_score = new_client.get_average_user_rating()
 ```
 This method calculates the average user rating for the movies rated by the user. It returns a float value representing the **average rating**. If there are no rated movies, it returns **None**.
 
 ### 3.4 Visualizing Popular Movies
-To generate a bar plot visualizing the popular movies' data, use the `popular_movies_visualisation` method.
+To generate a bar plot visualizing the popular movies' data, use the `popular_movies_visualisation` function.
 ```
-new_client.popular_movies_visualisation()
+popular_movies_visualisation(popular_movies)
 ```
-This method generates a bar plot displaying the **movie titles** on the x-axis and the **average ratings** on the y-axis. It requires the **seaborn**, **matplotlib.pyplot**, and **pandas** libraries to be installed.
+This function generates a bar plot displaying the **movie titles** on the x-axis and the **average ratings** on the y-axis. It requires the **seaborn**, **matplotlib.pyplot**, and **pandas** libraries to be installed.
 
 ### 3.5 Visualizing Rated Movies
-To generate a bar plot visualizing the movies rated by the user, use the `rated_movies_visualisation` method.
+To generate a bar plot visualizing the movies rated by the user, use the `rated_movies_visualisation` function.
 ```
-new_client.rated_movies_visualisation()
+rated_movies_visualisation(rated_movies, average_score)
 ```
-This method generates a bar plot displaying the **movie titles** on the x-axis and the **user ratings** on the y-axis. It also includes a red dashed line indicating the **average user rating**.
+This function generates a bar plot displaying the **movie titles** on the x-axis and the **user ratings** on the y-axis. It also includes a red dashed line indicating the **average user rating**.
 
 ## 4. Examples:
 ### 4.1 Rated Movies
 ![example 1](https://github.com/WojciechStopka/restaurant_finder_v2/assets/44327221/2e10b328-7732-409e-a931-11bfed1ae30c)
 
-### 4.2 10 Popular Movies
+### 4.2 15 Popular Movies
 ![example 2](https://github.com/WojciechStopka/restaurant_finder_v2/assets/44327221/466fa00d-634d-4993-81f6-83a1f63d81f0)
 
 ## 5. Ideas for improvements
